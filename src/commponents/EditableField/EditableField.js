@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
 const EditableField = ({ actionOnSave, textDefault }) => {
@@ -13,7 +13,10 @@ const EditableField = ({ actionOnSave, textDefault }) => {
 
   const handleOnBlur = () => {
     setActive(false);
-    dispatch(actionOnSave(text));
+    if (text.length > 0) {
+      dispatch(actionOnSave(text));
+      setText("");
+    }
   };
 
   return (
@@ -23,6 +26,7 @@ const EditableField = ({ actionOnSave, textDefault }) => {
           onBlur={handleOnBlur}
           onChange={handleOnChange}
           value={text}
+          autoFocus
         />
       ) : (
         <p onClick={() => setActive(true)}> {textDefault || text} </p>
