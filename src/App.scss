@@ -1,0 +1,20 @@
+@import "./sass/variables.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+  background-color: $bg-grey;
+  font-family: $roboto-font;
+}
+
+#root {
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+}

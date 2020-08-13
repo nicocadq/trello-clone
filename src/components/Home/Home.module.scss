@@ -1,0 +1,75 @@
+@import "../../sass/variables.scss";
+
+.container {
+  display: grid;
+  grid-template-rows: 80px 1fr;
+  height: 100%;
+  width: 100%;
+
+  .title {
+    font-weight: 500;
+    align-self: center;
+    justify-self: center;
+    padding: 0.5rem;
+  }
+
+  .board-links-wrapper {
+    max-width: 90%;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(23.5%, 1fr));
+    grid-gap: 10px;
+    justify-items: center;
+    align-items: center;
+
+    div {
+      border-radius: $radius;
+      color: $white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 300;
+      width: 100%;
+      height: 50px;
+    }
+
+    .board-link {
+      background-color: $turquoise;
+      position: relative;
+
+      &:hover {
+        button {
+          display: block;
+        }
+      }
+
+      a {
+        text-decoration: none;
+        color: $white;
+      }
+
+      button {
+        border: none;
+        background: none;
+        color: $white;
+        display: none;
+        position: absolute;
+        top: 6%;
+        right: 5%;
+        transition: ease-in-out 0.2s;
+
+        &:hover {
+          background-color: $dark-hover;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .add-board-field {
+      background-color: $gray;
+      color: $black;
+      font-size: 16px;
+    }
+  }
+}
