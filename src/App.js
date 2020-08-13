@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import Board from "./commponents/Board";
+import Board from "./components/Board";
 
 import "./App.scss";
 

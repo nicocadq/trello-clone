@@ -11,10 +11,14 @@ const Home = () => {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.tittle}>Boards</h2>
+      <h2 className={styles.title}>Boards</h2>
       <div className={styles["board-links-wrapper"]}>
         {Object.entries(boards).map((board) => (
-          <BoardLink key={board[0]} id={board[1].id} title={board[1].title} />
+          <BoardLink
+            key={board[1].id}
+            id={board[1].id}
+            title={board[1].title}
+          />
         ))}
         <div className={styles["add-board-field"]}>
           <EditableField

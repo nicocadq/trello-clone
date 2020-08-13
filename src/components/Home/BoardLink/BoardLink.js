@@ -13,7 +13,7 @@ const BoardLink = ({ id, title }) => {
   const dispatch = useDispatch();
 
   const handleDelteBoard = () => {
-    dispatch(deleteBoard(props.board));
+    dispatch(deleteBoard(id));
   };
 
   return (

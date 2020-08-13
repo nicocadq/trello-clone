@@ -9,7 +9,6 @@ const EditableField = ({ actionOnSave, textDefault }) => {
 
   const handleOnChange = (e) => {
     setText(e.target.value);
-    actionOnSave(text);
   };
 
   const handleOnBlur = () => {
@@ -34,6 +33,10 @@ const EditableField = ({ actionOnSave, textDefault }) => {
       )}
     </>
   );
+};
+
+EditableField.defaultProp = {
+  textDefault: "",
 };
 
 EditableField.propTypes = {
