@@ -6,7 +6,7 @@ const appSlice = createSlice({
   initialState: {},
   reducers: {
     addBoard(state, action) {
-      const newBoard = { id: nanoid(), tittle: action.payload };
+      const newBoard = { id: nanoid(), title: action.payload };
       state[newBoard.id] = newBoard;
     },
     deleteBoard(state, action) {
