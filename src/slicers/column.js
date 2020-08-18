@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { nanoid } from "nanoid";
 
-const boardSlice = createSlice({
+const columnSlice = createSlice({
   name: "columns",
   initialState: {},
   reducers: {
@@ -17,6 +17,6 @@ const boardSlice = createSlice({
   },
 });
 
-export const { addColumn, deleteColumn } = boardSlice.actions;
+export const { addColumn, deleteColumn } = columnSlice.actions;
 
-export default boardSlice.reducer;
+export default columnSlice.reducer;
