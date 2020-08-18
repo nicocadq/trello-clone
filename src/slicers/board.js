@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { nanoid } from "nanoid";
 
 const appSlice = createSlice({
-  name: "app",
+  name: "boards",
   initialState: {},
   reducers: {
     addBoard(state, action) {

@@ -1,0 +1,26 @@
+@import "../../sass/variables.scss";
+
+.container {
+  background-color: $blue;
+  height: 100vh;
+  width: 100%;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 250px;
+  justify-items: stretch;
+
+  .add-new-column {
+    background-color: $light-blue;
+    border: none;
+    border-radius: $radius;
+    color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17pt;
+    max-height: 32px;
+    padding: 18px 32px;
+  }
+}

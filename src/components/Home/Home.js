@@ -1,13 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { addBoard } from "../../reducers/app";
+import { addBoard } from "../../slicers/board";
 import BoardLink from "./BoardLink";
 import EditableField from "../EditableField";
 
 import styles from "./Home.module.scss";
 
 const Home = () => {
-  const boards = useSelector((state) => state.app) || {};
+  const boards = useSelector((state) => state.boards) || {};
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Boards</h2>
