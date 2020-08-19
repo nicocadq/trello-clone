@@ -6,8 +6,11 @@ const columnSlice = createSlice({
   initialState: {},
   reducers: {
     addColumn(state, action) {
-      const boardID = action.payload;
-      const newList = { id: nanoid(), boardID: boardID, title: "title" };
+      const newList = {
+        id: nanoid(),
+        boardID: action.payload.boardID,
+        title: action.payload.text,
+      };
       state[newList.id] = newList;
     },
     deleteColumn(state, action) {
