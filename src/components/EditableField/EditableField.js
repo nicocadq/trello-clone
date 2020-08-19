@@ -22,7 +22,8 @@ const EditableField = ({ actionOnSave, textDefault }) => {
   return (
     <>
       {active ? (
-        <textarea
+        <input
+          type="text"
           onBlur={handleOnBlur}
           onChange={handleOnChange}
           value={text}
