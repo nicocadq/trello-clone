@@ -8,8 +8,8 @@ const cardSlice = createSlice({
     addCard(state, action) {
       const newCard = {
         id: nanoid(),
-        columnID: action.payload,
-        text: "asdasdasdasdasad",
+        columnID: action.payload.columnID,
+        text: action.payload.text,
       };
       state[newCard.id] = newCard;
     },

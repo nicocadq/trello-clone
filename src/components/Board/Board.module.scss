@@ -13,16 +13,32 @@
   justify-items: stretch;
   padding: 5px;
 
+  button {
+    border: none;
+  }
+
   .add-new-column {
     background-color: $light-blue;
-    border: none;
     border-radius: $radius;
     color: $white;
+    cursor: pointer;
     display: flex;
+    justify-content: flex-start;
     align-items: center;
-    justify-content: center;
-    font-size: 17pt;
-    max-height: 32px;
+    font-size: 16px;
+    font-weight: 300;
     padding: 18px 32px;
+    max-height: 32px;
+    width: 100%;
+    transition: all 0.1s;
+
+    .icon {
+      font-size: 14px;
+      margin-right: 5px;
+    }
+
+    &:hover {
+      background-color: $dark-hover;
+    }
   }
 }

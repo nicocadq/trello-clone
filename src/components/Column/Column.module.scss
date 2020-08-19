@@ -10,4 +10,55 @@
     justify-content: center;
     padding: 10px;
   }
+
+  button {
+    border: none;
+  }
+
+  .header {
+    display: flex;
+    margin-bottom: 10px;
+    position: relative;
+    width: 100%;
+
+    &:hover {
+      .delete-button {
+        display: block;
+      }
+    }
+
+    .delete-button {
+      cursor: pointer;
+      display: none;
+      position: absolute;
+      top: 2%;
+      right: 2%;
+    }
+  }
+
+  .add-new-card {
+    background: transparent;
+    border-radius: $radius;
+    color: $black;
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 300;
+    margin-top: 5px;
+    padding: 18px 32px;
+    max-height: 32px;
+    width: 100%;
+    transition: all 0.1s;
+
+    .icon {
+      font-size: 14px;
+      margin-right: 5px;
+    }
+
+    &:hover {
+      background-color: $dark-hover;
+    }
+  }
 }
