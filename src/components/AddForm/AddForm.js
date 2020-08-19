@@ -41,11 +41,7 @@ const AddForm = ({
         autoFocus
       />
       <div className={styles.controls}>
-        <input
-          className={styles["input-submit"]}
-          type="submit"
-          value={buttonText}
-        />
+        <button className={styles["button-submit"]}>{buttonText}</button>
         <button onClick={handleCancel}>
           <FontAwesomeIcon icon={faTimes} />
         </button>

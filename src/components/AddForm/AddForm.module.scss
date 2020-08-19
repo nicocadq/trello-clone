@@ -11,19 +11,15 @@
   height: 80px;
   padding: 0.3rem;
 
-  input {
+  input,
+  button {
     background: none;
     border: none;
     border-radius: $radius;
   }
 
-  button {
-    background: none;
-    border: none;
-  }
-
   .controls {
-    input {
+    button {
       margin-right: 10px;
     }
   }
@@ -34,7 +30,7 @@
     width: 100%;
   }
 
-  .input-submit {
+  .button-submit {
     background-color: $green;
     color: $white;
     padding: 8px 12px;
