@@ -1,8 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import appReducer from "../reducers/app";
+import rootReducer from "../slicers/rootReducer";
 
 export default configureStore({
-  reducer: {
-    app: appReducer,
-  },
+  reducer: rootReducer,
 });

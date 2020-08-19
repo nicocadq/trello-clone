@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { nanoid } from "nanoid";
 
-const appSlice = createSlice({
-  name: "app",
+const boardSlice = createSlice({
+  name: "boards",
   initialState: {},
   reducers: {
     addBoard(state, action) {
@@ -16,6 +16,6 @@ const appSlice = createSlice({
   },
 });
 
-export const { addBoard, deleteBoard } = appSlice.actions;
+export const { addBoard, deleteBoard } = boardSlice.actions;
 
-export default appSlice.reducer;
+export default boardSlice.reducer;
