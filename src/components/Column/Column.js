@@ -3,10 +3,11 @@ import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { deleteColumn } from "../../slicers/column";
+import { deleteColumn, updateColumnTitle } from "../../slicers/column";
 import { addCard } from "../../slicers/card";
 import AddForm from "../AddForm";
 import Card from "../Card";
+import EditableField from "../EditableField";
 
 import styles from "./Column.module.scss";
 
@@ -38,11 +39,20 @@ const Column = ({ column }) => {
     setIsActiveForm(true);
   };
 
+  const handleUpdateColumnTitle = (title) => {
+    dispatch(updateColumnTitle({ id: id, title: title }));
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h3>{title}</h3>
+          <div className={styles.title}>
+            <EditableField
+              actionOnSave={(title) => handleUpdateColumnTitle(title)}
+              textDefault={title}
+            />
+          </div>
           <button
             className={styles["delete-button"]}
             onClick={() => handleDeleteColumn()}

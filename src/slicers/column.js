@@ -17,9 +17,17 @@ const columnSlice = createSlice({
       const key = action.payload;
       delete state[key];
     },
+    updateColumnTitle(state, action) {
+      const { id, title } = action.payload;
+      state[id].title = title;
+    },
   },
 });
 
-export const { addColumn, deleteColumn } = columnSlice.actions;
+export const {
+  addColumn,
+  deleteColumn,
+  updateColumnTitle,
+} = columnSlice.actions;
 
 export default columnSlice.reducer;
