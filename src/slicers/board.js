@@ -10,7 +10,7 @@ const boardSlice = createSlice({
       state[newBoard.id] = newBoard;
     },
     deleteBoard(state, action) {
-      const key = action.payload.id;
+      const key = action.payload;
       delete state[key];
     },
   },

@@ -1,0 +1,36 @@
+@import "../../sass/variables.scss";
+
+.container {
+  background: $white;
+  border-radius: $radius;
+  box-shadow: 0 1px 0 #b3b9c4;
+  font-weight: 300;
+  margin: 2.5px 2px;
+  padding: 20px;
+  width: 100%;
+  min-height: 20px;
+  position: relative;
+
+  button {
+    border: none;
+  }
+
+  &:hover {
+    .delete-button {
+      display: block;
+    }
+  }
+
+  .delete-button {
+    cursor: pointer;
+    display: none;
+    position: absolute;
+    top: 8%;
+    right: 5%;
+  }
+
+  .description {
+    word-wrap: break-word;
+    overflow: hidden;
+  }
+}

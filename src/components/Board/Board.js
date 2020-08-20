@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { addColumn } from "../../slicers/column";
 import Column from "../Column";
+import AddForm from "../AddForm";
 
 import styles from "./Board.module.scss";
 
@@ -14,18 +17,41 @@ const Board = ({ id }) => {
       Object.values(state.columns).filter((column) => column.boardID === id)
     ) || [];
 
+  const [isActiveForm, setIsActiveForm] = useState(true);
+
+  const submitAction = (text) => {
+    dispatch(addColumn({ boardID: id, text: text }));
+  };
+
+  const cancelAction = () => {
+    setIsActiveForm(false);
+  };
+
   const handleClick = () => {
-    dispatch(addColumn(id));
+    setIsActiveForm(true);
   };
 
   return (
     <div className={styles.container}>
       {columns.map((column) => (
-        <Column key={column.id} id={column.id} />
+        <Column
+          key={column.id}
+          column={{ id: column.id, title: column.title }}
+        />
       ))}
-      <button className={styles["add-new-column"]} onClick={handleClick}>
-        Add new
-      </button>
+      {isActiveForm ? (
+        <AddForm
+          buttonText="Add new Column"
+          submitAction={(text) => submitAction(text)}
+          placeholderText="Type title for new column"
+          cancelAction={() => cancelAction()}
+        />
+      ) : (
+        <button className={styles["add-new-column"]} onClick={handleClick}>
+          <FontAwesomeIcon className={styles.icon} icon={faPlus} />
+          Add new
+        </button>
+      )}
     </div>
   );
 };

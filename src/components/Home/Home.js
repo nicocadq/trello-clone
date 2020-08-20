@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addBoard } from "../../slicers/boards";
+import { addBoard } from "../../slicers/board";
 import BoardLink from "./BoardLink";
 import AddForm from "../AddForm";
 
@@ -8,7 +8,7 @@ import styles from "./Home.module.scss";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const boards = useSelector((state) => state.app) || {};
+  const boards = useSelector((state) => state.boards) || {};
   const [isActiveForm, setIsActiveForm] = useState(true);
 
   const submitAction = (text) => {
