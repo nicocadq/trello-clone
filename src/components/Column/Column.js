@@ -78,7 +78,7 @@ Column.propTypes = {
   column: PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-  }),
+  }).isRequired,
 };
 
 export default Column;
