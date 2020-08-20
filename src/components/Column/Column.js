@@ -75,7 +75,10 @@ const Column = ({ column }) => {
 };
 
 Column.propTypes = {
-  column: PropTypes.object.isRequired,
+  column: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  }),
 };
 
 export default Column;

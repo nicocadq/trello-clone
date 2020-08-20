@@ -30,7 +30,10 @@ const Card = ({ card }) => {
 };
 
 Card.propTypes = {
-  card: PropTypes.object.isRequired,
+  card: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+  }),
 };
 
 export default Card;
