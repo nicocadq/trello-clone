@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
+import styles from "./EditableField.module.scss";
+
 const EditableField = ({ actionOnSave, textDefault }) => {
   const [text, setText] = useState("");
   const [active, setActive] = useState(!textDefault);
@@ -21,15 +23,12 @@ const EditableField = ({ actionOnSave, textDefault }) => {
     <>
       {active ? (
         <input
+          className={styles.input}
           type="text"
           onBlur={handleOnBlur}
           onChange={handleOnChange}
           value={text}
           autoFocus
-          style={{
-            padding: "2px",
-            width: "100%",
-          }}
         />
       ) : (
         <p onClick={() => setActive(true)}> {textDefault || text} </p>
