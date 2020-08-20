@@ -17,8 +17,12 @@ const cardSlice = createSlice({
       const key = action.payload;
       delete state[key];
     },
+    updateCardText(state, action) {
+      const { id, text } = action.payload;
+      state[id].text = text;
+    },
   },
 });
 
-export const { addCard, deleteCard } = cardSlice.actions;
+export const { addCard, deleteCard, updateCardText } = cardSlice.actions;
 export default cardSlice.reducer;

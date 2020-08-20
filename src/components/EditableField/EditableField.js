@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
+
+import styles from "./EditableField.module.scss";
 
 const EditableField = ({ actionOnSave, textDefault }) => {
   const [text, setText] = useState("");
   const [active, setActive] = useState(!textDefault);
-  const dispatch = useDispatch();
 
   const handleOnChange = (e) => {
     setText(e.target.value);
@@ -14,7 +14,7 @@ const EditableField = ({ actionOnSave, textDefault }) => {
   const handleOnBlur = () => {
     setActive(false);
     if (text.length > 0) {
-      dispatch(actionOnSave(text));
+      actionOnSave(text);
       setText("");
     }
   };
@@ -23,6 +23,7 @@ const EditableField = ({ actionOnSave, textDefault }) => {
     <>
       {active ? (
         <input
+          className={styles.input}
           type="text"
           onBlur={handleOnBlur}
           onChange={handleOnChange}
