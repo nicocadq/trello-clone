@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { deleteCard } from "../../slicers/card";
+import { deleteCard, updateCardText } from "../../slicers/card";
+import EditableField from "../EditableField";
 
 import styles from "./Card.module.scss";
 
@@ -16,6 +17,10 @@ const Card = ({ card }) => {
     dispatch(deleteCard(id));
   };
 
+  const handleUpdateCardText = (text) => {
+    dispatch(updateCardText({ id: id, text: text }));
+  };
+
   return (
     <div className={styles.container}>
       <button
@@ -24,7 +29,12 @@ const Card = ({ card }) => {
       >
         <FontAwesomeIcon icon={faTrash} />
       </button>
-      <div className={styles.description}>{text}</div>
+      <div className={styles.description}>
+        <EditableField
+          actionOnSave={(text) => handleUpdateCardText(text)}
+          textDefault={text}
+        />
+      </div>
     </div>
   );
 };
