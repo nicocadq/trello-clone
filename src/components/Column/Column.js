@@ -50,7 +50,7 @@ const Column = ({ column }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-        <div className={styles.haeder}>
+        <div className={styles.header}>
           <div className={styles.title}>
             <EditableField
               actionOnSave={(title) => handleUpdateColumnTitle(title)}
