@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { DragDropContext } from "react-beautiful-dnd";
+import { useHistory } from "react-router-dom";
 import { addColumn } from "../../slicers/column";
 import {
   updateCardColumnID,
@@ -16,6 +17,13 @@ import AddForm from "../AddForm";
 import styles from "./Board.module.scss";
 
 const Board = ({ id }) => {
+  const history = useHistory();
+  const isBoardExist = useSelector((state) => state.boards[id]);
+
+  if (!isBoardExist) {
+    history.push("/");
+  }
+
   const dispatch = useDispatch();
 
   const columns =
