@@ -40,30 +40,27 @@ const Board = ({ id }) => {
 
   const handleOnDragEnd = (result) => {
     const { destination, source, draggableId } = result;
+    const { droppableId, index } = destination;
 
-    if (!destination) {
-      return;
-    }
+    const hasPositionChange =
+      droppableId === source.droppableId && index === source.index;
 
-    if (
-      destination.droppableId === source.droppableId &&
-      destination.index === source.index
-    ) {
-      return;
-    }
+    if (!destination) return;
+
+    if (hasPositionChange) return;
 
     dispatch(
       updateCardColumnID({
         id: draggableId,
-        columnID: destination.droppableId,
+        columnID: droppableId,
       })
     );
 
     dispatch(
       updateCardsIndexOnDragEnd({
         id: draggableId,
-        columnID: destination.droppableId,
-        index: destination.index,
+        columnID: droppableId,
+        index: index,
       })
     );
   };
@@ -84,18 +81,15 @@ const Board = ({ id }) => {
       onDragStart={handleOnDragStart}
     >
       <div className={styles.container}>
-        {columns.map((column) => (
-          <Column
-            key={column.id}
-            column={{ id: column.id, title: column.title }}
-          />
+        {columns.map(({ id, title }) => (
+          <Column key={id} column={{ id: id, title: title }} />
         ))}
         {isActiveForm ? (
           <AddForm
             buttonText="Add new Column"
-            submitAction={(text) => submitAction(text)}
+            submitAction={submitAction}
             placeholderText="Type title for new column"
-            cancelAction={() => cancelAction()}
+            cancelAction={cancelAction}
           />
         ) : (
           <button className={styles["add-new-column"]} onClick={handleClick}>

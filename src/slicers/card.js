@@ -40,13 +40,17 @@ const cardSlice = createSlice({
     updateCardsIndexOnDragStart(state, action) {
       const { id } = action.payload;
       const { columnID, index } = state[id];
-      Object.values(state)
-        .filter((card) => card.columnID === columnID)
-        .forEach((card) => {
-          if (card.index > index) {
-            card.index = card.index - 1;
-          }
-        });
+
+      const values = Object.values(state);
+
+      const uniqueValues = values.filter((card) => card.columnID === columnID);
+      uniqueValues.forEach((card) => {
+        const isCardUnderMovedCard = card.index > index;
+
+        if (isCardUnderMovedCard) {
+          card.index = card.index - 1;
+        }
+      });
     },
   },
 });
