@@ -40,7 +40,7 @@ const Board = ({ id }) => {
 
   const handleOnDragEnd = (result) => {
     const { destination, source, draggableId } = result;
-    const { droppableId, index } = destination;
+    const { droppableId, index } = destination || {};
 
     const hasPositionChange =
       droppableId === source.droppableId && index === source.index;
