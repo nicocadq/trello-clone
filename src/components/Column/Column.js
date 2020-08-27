@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Droppable } from "react-beautiful-dnd";
 import { deleteColumn, updateColumnTitle } from "../../slicers/column";
 import { addCard } from "../../slicers/card";
 import AddForm from "../AddForm";
@@ -18,13 +19,16 @@ const Column = ({ column }) => {
 
   const cards =
     useSelector((state) =>
-      Object.values(state.cards).filter((card) => card.columnID === id)
+      Object.values(state.cards)
+        .filter((card) => card.columnID === id)
+        .sort((a, b) => a.index - b.index)
     ) || [];
 
-  const [isActiveForm, setIsActiveForm] = useState(true);
+  const [isActiveForm, setIsActiveForm] = useState(false);
 
   const submitAction = (text) => {
-    dispatch(addCard({ columnID: id, text: text }));
+    dispatch(addCard({ columnID: id, text: text, index: cards.length }));
+    setIsActiveForm(false);
   };
 
   const cancelAction = () => {
@@ -60,9 +64,20 @@ const Column = ({ column }) => {
             <FontAwesomeIcon icon={faTrash} />
           </button>
         </div>
-        {cards.map((card) => (
-          <Card key={card.id} card={{ id: card.id, text: card.text }} />
-        ))}
+        <Droppable droppableId={id}>
+          {(provided, snapshot) => (
+            <div ref={provided.innerRef} {...provided.droppableProps}>
+              {cards.map((card, index) => (
+                <Card
+                  key={card.id}
+                  card={{ id: card.id, text: card.text }}
+                  index={index}
+                />
+              ))}
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
         {isActiveForm ? (
           <AddForm
             buttonText="Add new Card"
