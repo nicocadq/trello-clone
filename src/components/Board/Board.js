@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { DragDropContext } from "react-beautiful-dnd";
+import { useHistory } from "react-router-dom";
 import { addColumn } from "../../slicers/column";
 import {
   updateCardColumnID,
@@ -16,7 +17,17 @@ import AddForm from "../AddForm";
 import styles from "./Board.module.scss";
 
 const Board = ({ id }) => {
+  const history = useHistory();
+
   const dispatch = useDispatch();
+
+  const doesBoardExists = useSelector((state) => state.boards[id]);
+
+  useEffect(() => {
+    if (!doesBoardExists) {
+      history.push("/");
+    }
+  });
 
   const columns =
     useSelector((state) =>
@@ -40,12 +51,13 @@ const Board = ({ id }) => {
 
   const handleOnDragEnd = (result) => {
     const { destination, source, draggableId } = result;
+
+    if (!destination) return;
+
     const { droppableId, index } = destination;
 
     const hasPositionChange =
       droppableId === source.droppableId && index === source.index;
-
-    if (!destination) return;
 
     if (hasPositionChange) return;
 

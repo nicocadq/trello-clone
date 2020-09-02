@@ -25,6 +25,12 @@
     position: relative;
     width: 100%;
 
+    p {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
     &:hover {
       .delete-button {
         display: block;
@@ -38,6 +44,10 @@
       top: 2%;
       right: 2%;
     }
+  }
+
+  .main {
+    min-height: 10px;
   }
 
   .add-new-card {

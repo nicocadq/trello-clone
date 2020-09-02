@@ -66,7 +66,11 @@ const Column = ({ column }) => {
         </div>
         <Droppable droppableId={id}>
           {(provided, snapshot) => (
-            <div ref={provided.innerRef} {...provided.droppableProps}>
+            <div
+              className={styles.main}
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+            >
               {cards.map((card, index) => (
                 <Card
                   key={card.id}
