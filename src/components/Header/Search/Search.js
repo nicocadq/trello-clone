@@ -13,18 +13,14 @@ const Search = () => {
   const [activeDropdown, setActiveDropdown] = useState(false);
   const [inputText, setInputText] = useState("");
 
-  const doesExistsValueInString = (value, string) => {
-    const lowerCaseString = string.toLowerCase();
-    const valuePosition = lowerCaseString.search(value);
-    return !(valuePosition === -1);
+  const doesExistsValueInString = (value, currentSearch) => {
+    const lowerCaseSearch = currentSearch.toLowerCase();
+    const valuePosition = lowerCaseSearch.search(value);
+    return valuePosition !== -1;
   };
 
   const searchCards = (value) => {
-    const matchedCards = [];
-    cards.forEach((card) => {
-      if (doesExistsValueInString(value, card.text)) matchedCards.push(card);
-    });
-    return matchedCards;
+    return cards.filter((card) => doesExistsValueInString(value, card.text));
   };
 
   const delayedSearch = useCallback(
@@ -35,15 +31,12 @@ const Search = () => {
   useEffect(() => {
     delayedSearch();
     return delayedSearch.cancel;
-  }, [inputText, delayedSearch]);
+  }, [delayedSearch]);
 
   const handleOnChange = (e) => {
     const value = e.target.value;
-    if (value === "\\") {
-      return;
-    } else {
-      setInputText(e.target.value);
-    }
+    if (value === "\\") return;
+    setInputText(e.target.value);
   };
 
   const handleOnBlur = () => {
@@ -79,9 +72,9 @@ const Search = () => {
           }
         >
           {resultSet.length > 0 ? (
-            resultSet.map((card) => (
-              <Link key={card.id} to={`/board/${card.boardID}`}>
-                <p className={styles["drop-down__item"]}>{card.text}</p>
+            resultSet.map(({ id, boardID, text }) => (
+              <Link key={id} to={`/board/${boardID}`}>
+                <p className={styles["drop-down__item"]}>{text}</p>
               </Link>
             ))
           ) : (
