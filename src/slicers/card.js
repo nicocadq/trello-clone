@@ -9,6 +9,7 @@ const cardSlice = createSlice({
       const newCard = {
         id: nanoid(),
         columnID: action.payload.columnID,
+        boardID: action.payload.boardID,
         text: action.payload.text,
         index: action.payload.index,
       };

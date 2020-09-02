@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { faHome, faSearch, faRedo } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faRedo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Search from "./Search";
 
 import styles from "./Header.module.scss";
 
@@ -13,12 +14,7 @@ const Header = () => {
           <FontAwesomeIcon icon={faHome} />
         </Link>
       </nav>
-      <form className={styles["search-form"]}>
-        <input className={styles.input} type="text" />
-        <button className={styles.button}>
-          <FontAwesomeIcon icon={faSearch} />
-        </button>
-      </form>
+      <Search />
       <div className={styles.arrows}>
         <span
           className={

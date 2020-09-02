@@ -15,7 +15,7 @@ import styles from "./Column.module.scss";
 const Column = ({ column }) => {
   const dispatch = useDispatch();
 
-  const { id, title } = column;
+  const { id, title, boardID } = column;
 
   const cards =
     useSelector((state) =>
@@ -27,7 +27,14 @@ const Column = ({ column }) => {
   const [isActiveForm, setIsActiveForm] = useState(false);
 
   const submitAction = (text) => {
-    dispatch(addCard({ columnID: id, text: text, index: cards.length }));
+    dispatch(
+      addCard({
+        columnID: id,
+        boardID: boardID,
+        text: text,
+        index: cards.length,
+      })
+    );
     setIsActiveForm(false);
   };
 

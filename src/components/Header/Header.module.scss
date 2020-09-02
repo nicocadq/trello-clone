@@ -30,45 +30,6 @@
     }
   }
 
-  .search-form {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    width: 30%;
-
-    .input {
-      background: $light-blue;
-      width: 100%;
-      padding-left: 5px;
-      border: none;
-      border-radius: 5px;
-      color: $white;
-      font-size: 16px;
-      font-weight: bold;
-    }
-
-    .input::placeholder {
-      font-size: 16px;
-      font-weight: bold;
-      color: $white;
-    }
-
-    .input:focus {
-      border: none;
-    }
-
-    .button {
-      position: absolute;
-      top: 15%;
-      right: 2%;
-      background: none;
-      border: none;
-      color: $white;
-      font-size: 24px;
-      align-self: center;
-    }
-  }
-
   .arrows {
     position: absolute;
     right: 1%;

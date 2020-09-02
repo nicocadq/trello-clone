@@ -81,8 +81,11 @@ const Board = ({ id }) => {
       onDragStart={handleOnDragStart}
     >
       <div className={styles.container}>
-        {columns.map(({ id, title }) => (
-          <Column key={id} column={{ id: id, title: title }} />
+        {columns.map(({ id, title, boardID }) => (
+          <Column
+            key={id}
+            column={{ id: id, title: title, boardID: boardID }}
+          />
         ))}
         {isActiveForm ? (
           <AddForm
