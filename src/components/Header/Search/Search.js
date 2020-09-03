@@ -10,12 +10,13 @@ import styles from "./Search.module.scss";
 const Search = () => {
   const cards = useSelector((state) => Object.values(state.cards));
   const [resultSet, setResultSet] = useState([]);
-  const [activeDropdown, setActiveDropdown] = useState(false);
+  const [isActiveDropdown, setIsActiveDropdown] = useState(false);
   const [inputText, setInputText] = useState("");
 
   const doesExistsValueInString = (value, currentSearch) => {
     const lowerCaseSearch = currentSearch.toLowerCase();
     const valuePosition = lowerCaseSearch.search(value);
+
     return valuePosition !== -1;
   };
 
@@ -30,24 +31,27 @@ const Search = () => {
 
   useEffect(() => {
     delayedSearch();
+
     return delayedSearch.cancel;
   }, [delayedSearch]);
 
   const handleOnChange = (e) => {
     const value = e.target.value;
+
     if (value === "\\") return;
-    setInputText(e.target.value);
+
+    setInputText(value);
   };
 
   const handleOnBlur = () => {
     setTimeout(() => {
-      setActiveDropdown(false);
+      setIsActiveDropdown(false);
       setResultSet([]);
     }, 50);
   };
 
   const handleOnFocus = () => {
-    setActiveDropdown(true);
+    setIsActiveDropdown(true);
   };
 
   return (
@@ -65,10 +69,12 @@ const Search = () => {
           <FontAwesomeIcon icon={faSearch} />
         </button>
       </div>
-      {activeDropdown && (
+      {isActiveDropdown && (
         <div
           className={
-            activeDropdown ? styles["drop-down"] : styles["drop-down--disabled"]
+            isActiveDropdown
+              ? styles["drop-down"]
+              : styles["drop-down--disabled"]
           }
         >
           {resultSet.length > 0 ? (
