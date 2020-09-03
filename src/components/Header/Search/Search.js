@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./Search.module.scss";
 
 const Search = () => {
-  const cards = useSelector((state) => Object.values(state.cards) || {});
+  const cards = useSelector((state) => Object.values(state.cards));
   const [resultSet, setResultSet] = useState([]);
   const [activeDropdown, setActiveDropdown] = useState(false);
   const [inputText, setInputText] = useState("");
